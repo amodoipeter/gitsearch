@@ -4,6 +4,8 @@ import {HttpClientModule} from '@angular/common/http'
 import {HttpClient} from '@angular/common/http'
 // import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms'
+import { HttpHeaderResponse } from '@angular/common/http';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,8 +23,8 @@ import { ProfileService } from './profile.service';
     // HttpModule,
     FormsModule,
     HttpClientModule,
-    HttpClient
-
+    HttpClient,
+    HttpHeaderResponse
   ],
   providers: [ProfileService],
   bootstrap: [AppComponent]
