@@ -1,11 +1,10 @@
 import {HttpClient} from '@angular/common/http'
 import { Injectable } from '@angular/core';
-import { HttpHeaders } from '@angular/common/http';
-import { HttpHeaderResponse } from '@angular/common/http';
-
+// import { HttpHeaders } from '@angular/common/http';
+// import { HttpHeaderResponse } from '@angular/common/http';
 import 'rxjs/add/operator/map';
-import {throwError} from 'rxjs';
-import {catchError, map} from 'rxjs/operators';
+// import {throwError} from 'rxjs';
+// import {catchError, map} from 'rxjs/operators';
 
 
 @Injectable({
@@ -22,13 +21,16 @@ export class ProfileService {
    }
 
    getProfileInfo(){
-     return this.http.get("https://api.github.com/users/" + this.username + "?client_id=" + this.clientid + "&client_secret=" + this.clientsecret)
-     .map(res => res.json());
-
+     return this.http.get("https://api.github.com/users/" + this.username + "?client_id=" +
+      this.clientid + "&client_secret=" + this.clientsecret)
+     .map(res => console.log('getProfileInfo ', res));
+    
    }
    getProfileRepos(){
-    return this.http.get("https://api.github.com/users/" + this.username + "/repos?client_id=" + this.clientid + "&client_secret=" + this.clientsecret)
-    .map(res => res.json());
+    return this.http.get("https://api.github.com/users/" + this.username + "/repos?client_id=" +
+     this.clientid + "&client_secret=" + this.clientsecret)
+    .map(res => console.log('getProfileRepos ', res));
+    
 
    }
    updateProfile(username:string){
