@@ -1,33 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../profile.service';
-
+import { User } from '../user';
+import { Repos } from '../repos';
 @Component({
   selector: 'gg-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  profile: any[];
-  repos: any[];
-  username: string;
+  profile =[];
+  repos:Repos;
+  profiles: User;
 
   constructor(private ProfileService: ProfileService) { 
-
+    this.profiles=new User('','','','',0,0,0)
   }
 
-  findProfile(){
-    this.ProfileService.updateProfile(this.username);
-    this.ProfileService.getProfileInfo().subscribe(profile => {
-      console.log(profile);
-      // this.profile=profile;
+  findProfile(user){
+    this.ProfileService.getProfileInfo(user).subscribe(profile => {
+      this.profiles = profile;
     });
-    this.ProfileService.getProfileRepos().subscribe(repos =>{
-      console.log(repos);
-      // this.repos =repos;
+    this.ProfileService.getProfileRepos(user).subscribe(repos =>{
+      this.repos = repos;
     })
   }
 
   ngOnInit(): void {
+    this.findProfile('amodoipeter');
   }
 
 }
